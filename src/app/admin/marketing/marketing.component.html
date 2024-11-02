@@ -1,0 +1,51 @@
+    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+        <div
+            class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+            <div>
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl mb-4">Campañas Enviadas <b></b></h2>
+
+
+            </div>
+            <div
+                class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+
+
+
+            </div>
+        </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">#</th>
+                        <th scope="col" class="px-6 py-3">Imagen</th>
+                        <th scope="col" class="px-6 py-3">Titulo</th>
+                        <th scope="col" class="px-6 py-3">Mensaje</th>
+                        <th scope="col" class="px-6 py-3">Categoria de Usuarios</th>
+                        <th scope="col" class="px-6 py-3">Fecha de envio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listMarketing"
+                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                        <td class="px-6 py-4">{{item.Mid}}</td>
+                        <td class="px-6 py-4">
+                            <img class="rounded-lg" [src]="baseUrl + item.Mimage"
+                                alt="image description" width="150" >
+                        </td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{item.Mtitle}}
+                        </th>
+                        <td class="px-6 py-4">{{item.Mmessage}}</td>
+                        <td class="px-6 py-4">{{item.Mtype}}</td>
+                        <td class="px-6 py-4">{{item.Mcreated | date: 'dd-MM-yyyy'}}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <app-pagination [totalItems]="totalItems" [itemsRegisterPage]="itemsRegisterPage"
+                [currentPage]="currentPage" (pageChanged)="onPageChanged($event)"></app-pagination>
+        </div>
+    </div>
+
